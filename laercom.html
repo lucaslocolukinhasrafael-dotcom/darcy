@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laercom | O Sistema Integrado de Escala para E-commerce</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { 
+        extend: {
+          colors: {
+            brand: {
+              navy: '#041E40',
+              orange: {
+                light: '#F2811D',
+                DEFAULT: '#F26B1D',
+                dark: '#F2561D'
+              },
+              white: '#F2F2F2'
+            }
+          }
+        } 
+      }
+    }
+    // Prevent FOUC
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
+  </script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white dark:bg-brand-navy text-brand-navy dark:text-zinc-50 antialiased transition-colors duration-300" style="font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
+  <div class="relative overflow-hidden">
+    <!-- Background effects -->
+    <div class="absolute inset-x-0 top-0 h-[40rem] bg-[radial-gradient(circle_at_top,_rgba(242,107,29,0.15),_transparent_35%),radial-gradient(circle_at_20%_30%,_rgba(242,129,29,0.10),_transparent_28%),radial-gradient(circle_at_80%_20%,_rgba(168,85,247,0.08),_transparent_24%)] dark:bg-[radial-gradient(circle_at_top,_rgba(242,107,29,0.20),_transparent_35%),radial-gradient(circle_at_20%_30%,_rgba(242,129,29,0.15),_transparent_28%),radial-gradient(circle_at_80%_20%,_rgba(168,85,247,0.12),_transparent_24%)]"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(24,24,27,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(24,24,27,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_at_top,black_35%,transparent_75%)] -z-10"></div>
+
+    <header class="relative z-10">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8 border-b border-transparent dark:border-white/10">
+        <a href="#" class="flex items-center gap-3">
+          <!-- Original Logo mapped for light/dark mode -->
+          <img src="assets/logo-light.png" alt="Laercom Logo" class="h-16 md:h-20 w-auto dark:hidden transition-all duration-300">
+          <img src="assets/logo-dark.png" alt="Laercom Logo" class="h-16 md:h-20 w-auto hidden dark:block transition-all duration-300">
+        </a>
+
+        <nav class="hidden items-center gap-8 md:flex">
+          <a href="#o-gargalo" class="text-sm font-medium text-zinc-500 dark:text-zinc-400 transition hover:text-zinc-900 dark:hover:text-white">O Gargalo Oculto</a>
+          <a href="#a-prova" class="text-sm font-medium text-zinc-500 dark:text-zinc-400 transition hover:text-zinc-900 dark:hover:text-white">O Mecanismo</a>
+          <a href="#o-sistema" class="text-sm font-medium text-zinc-500 dark:text-zinc-400 transition hover:text-zinc-900 dark:hover:text-white">O Sistema</a>
+          <a href="#fit" class="text-sm font-medium text-zinc-500 dark:text-zinc-400 transition hover:text-zinc-900 dark:hover:text-white">Para Quem É</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <!-- Dark Mode Toggle Button -->
+          <button id="theme-toggle" type="button" class="text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full p-2 transition-colors">
+            <i data-lucide="moon" id="theme-toggle-dark-icon" class="hidden w-5 h-5"></i>
+            <i data-lucide="sun" id="theme-toggle-light-icon" class="hidden w-5 h-5"></i>
+          </button>
+          <a href="#auditoria" class="inline-flex rounded-full bg-brand-navy dark:bg-white px-5 py-2.5 text-sm font-medium text-white dark:text-brand-navy shadow-sm transition hover:bg-zinc-800 dark:hover:bg-zinc-200">Aplicar para Auditoria</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="relative z-10">
+      <!-- Hero Section -->
+      <section class="mx-auto max-w-7xl px-6 pb-14 pt-10 lg:px-8 lg:pt-16">
+        <div class="mx-auto max-w-4xl text-center">
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-zinc-200 dark:border-brand-navy/30 bg-white/90 dark:bg-white/10 px-3 py-1.5 shadow-sm backdrop-blur">
+            <span class="h-2 w-2 rounded-full bg-brand-orange-light"></span>
+            <span class="text-sm font-medium text-zinc-600 dark:text-zinc-300">A peça que falta na escala do seu e-commerce</span>
+          </div>
+          <h1 class="text-5xl font-semibold tracking-tight text-brand-navy dark:text-white sm:text-6xl lg:text-7xl">
+            O seu ROAS está
+            <br class="hidden sm:block">
+            mentindo para você.
+          </h1>
+          <p class="mx-auto mt-6 max-w-2xl text-lg font-normal leading-8 text-zinc-600 dark:text-zinc-400">
+            Você aumenta o budget, mas o faturamento bate no mesmo teto. Você troca de agência, mas os resultados continuam estagnados. Descubra o gargalo oculto que está travando a sua loja e entenda por que os pilares da sua operação estão brigando entre si.
+          </p>
+          <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <a href="#auditoria" class="inline-flex rounded-full bg-brand-navy dark:bg-white px-6 py-3.5 text-sm font-medium text-white dark:text-brand-navy shadow-sm transition hover:bg-zinc-800 dark:hover:bg-zinc-200">Agendar Auditoria 360 Gratuita</a>
+          </div>
+        </div>
+
+        <!-- Dashboard Visual -->
+        <div class="relative mx-auto mt-16 max-w-5xl">
+          <div class="absolute inset-x-10 -top-8 h-40 rounded-full bg-gradient-to-r from-brand-orange/30 via-sky-200/40 to-violet-200/50 dark:from-brand-orange/20 dark:via-sky-500/20 dark:to-violet-500/20 blur-3xl"></div>
+          <div class="relative overflow-hidden rounded-[2rem] border border-zinc-200 dark:border-brand-navy/30 bg-white/95 dark:bg-white/5 p-3 shadow-[0_20px_80px_-20px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_80px_-20px_rgba(0,0,0,0.5)] backdrop-blur">
+            <img src="./site com imagens, animações, elementos e efeitos/images/image.jpg" alt="Visão Geral do Sistema Laercom" class="w-full rounded-[1.5rem] border border-zinc-200 dark:border-brand-navy/30 object-cover opacity-90 dark:opacity-80 transition-opacity">
+          </div>
+        </div>
+      </section>
+      <!-- Ecossistema de Integrações -->
+      <section class="py-8 transition-colors duration-300 relative z-10">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+          <div class="text-center mb-6">
+            <p class="text-sm font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Conectamos e otimizamos todo o ecossistema</p>
+          </div>
+          <div class="flex max-w-6xl mx-auto flex-wrap items-center justify-center gap-4">
+            <div class="flex items-center gap-2 rounded-full border border-zinc-200 dark:border-brand-navy/30 bg-white dark:bg-white/5 px-4 py-2 text-sm font-medium text-zinc-700 dark:text-zinc-200 shadow-sm transition hover:shadow-md">
+              <img src="./site com imagens, animações, elementos e efeitos/images/meta-circle-logo.svg" alt="Meta" class="h-6 w-6"> Meta Ads
+            </div>
+            <div class="flex items-center gap-2 rounded-full border border-zinc-200 dark:border-brand-navy/30 bg-white dark:bg-white/5 px-4 py-2 text-sm font-medium text-zinc-700 dark:text-zinc-200 shadow-sm transition hover:shadow-md">
+              <img src="./site com imagens, animações, elementos e efeitos/images/google-circle-logo.svg" alt="Google" class="h-6 w-6"> Google Ads
+            </div>
+            <div class="flex items-center gap-2 rounded-full border border-zinc-200 dark:border-brand-navy/30 bg-white dark:bg-white/5 px-4 py-2 text-sm font-medium text-zinc-700 dark:text-zinc-200 shadow-sm transition hover:shadow-md">
+              <img src="./site com imagens, animações, elementos e efeitos/images/shopify-circle-logo.svg" alt="Shopify" class="h-6 w-6"> Shopify
+            </div>
+            <div class="flex items-center gap-2 rounded-full border border-zinc-200 dark:border-brand-navy/30 bg-white dark:bg-white/5 px-4 py-2 text-sm font-medium text-zinc-700 dark:text-zinc-200 shadow-sm transition hover:shadow-md">
+              <img src="./site com imagens, animações, elementos e efeitos/images/vtex-circle-logo.svg" alt="VTEX" class="h-6 w-6"> VTEX
+            </div>
+            <div class="flex items-center gap-2 rounded-full border border-zinc-200 dark:border-brand-navy/30 bg-white dark:bg-white/5 px-4 py-2 text-sm font-medium text-zinc-700 dark:text-zinc-200 shadow-sm transition hover:shadow-md">
+              <img src="./site com imagens, animações, elementos e efeitos/images/nuvemshop-circle-logo.svg" alt="Nuvemshop" class="h-6 w-6"> Nuvemshop
+            </div>
+            <div class="flex items-center gap-2 rounded-full border border-zinc-200 dark:border-brand-navy/30 bg-white dark:bg-white/5 px-4 py-2 text-sm font-medium text-zinc-700 dark:text-zinc-200 shadow-sm transition hover:shadow-md">
+              <img src="./site com imagens, animações, elementos e efeitos/images/tray-circle-logo.svg" alt="Tray" class="h-6 w-6"> Tray
+            </div>
+            <div class="flex items-center gap-2 rounded-full border border-zinc-200 dark:border-brand-navy/30 bg-white dark:bg-white/5 px-4 py-2 text-sm font-medium text-zinc-700 dark:text-zinc-200 shadow-sm transition hover:shadow-md">
+              <img src="./site com imagens, animações, elementos e efeitos/images/google-analytics-circle-logo.svg" alt="Google Analytics" class="h-6 w-6"> Analytics
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- O Problema -->
+      <section id="o-gargalo" class="mx-auto max-w-7xl px-6 py-14 lg:px-8 lg:py-20">
+        <div class="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div>
+            <h2 class="text-4xl font-semibold tracking-tight text-brand-navy dark:text-white sm:text-5xl">O gargalo que 8 em cada 10 lojas têm</h2>
+            <p class="mt-4 max-w-2xl text-lg font-normal leading-8 text-zinc-600 dark:text-zinc-400">
+              E que nenhum gestor focado apenas em anúncios vai te revelar.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-12 grid gap-6 md:grid-cols-2">
+          <div class="rounded-[2rem] border border-zinc-200 dark:border-brand-navy/30 bg-white dark:bg-white/5 p-6 md:p-8 shadow-sm">
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-rose-50 dark:bg-rose-500/10 mb-6 border border-transparent dark:border-rose-500/20">
+              <i data-lucide="trending-down" class="h-6 w-6 text-rose-500 dark:text-rose-400"></i>
+            </div>
+            <h3 class="text-2xl font-semibold text-brand-navy dark:text-white">Por que você está travado</h3>
+            <p class="mt-4 text-base font-normal leading-7 text-zinc-600 dark:text-zinc-400">
+              Você já sentiu isso na pele. Toda semana a agência te mostra relatórios lindos, com ROAS de 4 ou 5. As métricas do Meta Ads parecem perfeitas. Mas quando você vai fechar a conta no fim do mês, o dinheiro não sobrou.
+            </p>
+            <p class="mt-4 text-base font-normal leading-7 text-zinc-600 dark:text-zinc-400">
+              O que acontece é que o mercado foi desenhado para vender serviços isolados. Alguém faz seus anúncios de um jeito, a loja está configurada de outro, e ninguém se preocupa com o funil depois da compra. Quando você tenta escalar a verba de anúncios sem esses pilares conectados, o ROAS despenca na hora.
+            </p>
+          </div>
+
+          <div class="rounded-[2rem] border border-zinc-200 dark:border-brand-navy/30 bg-white dark:bg-white/5 p-6 md:p-8 shadow-sm">
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-orange/10 dark:bg-brand-orange/10 mb-6 border border-transparent dark:border-brand-orange/20">
+              <i data-lucide="link" class="h-6 w-6 text-brand-orange dark:text-brand-orange-light"></i>
+            </div>
+            <h3 class="text-2xl font-semibold text-brand-navy dark:text-white">A conexão que falta</h3>
+            <p class="mt-4 text-base font-normal leading-7 text-zinc-600 dark:text-zinc-400">
+              Para escalar sem jogar dinheiro fora, tráfego, criativos, experiência no site e retenção precisam trabalhar juntos. Se um anúncio incrível leva o seu cliente para uma página mal otimizada, é dinheiro jogado fora. Se você atrai muita gente qualificada mas não recupera os carrinhos, está deixando lucro na mesa.
+            </p>
+            <p class="mt-4 text-base font-normal leading-7 text-zinc-600 dark:text-zinc-400">
+              As lojas que dobram de tamanho não descobriram um segredo mágico no algoritmo. Elas simplesmente integram toda a jornada. E é exatamente isso que a gente faz por você.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Números / Prova Social & Integrações -->
+      <section class="border-t border-zinc-200 dark:border-white/10 bg-white dark:bg-brand-navy py-16 transition-colors duration-300">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+          <header class="flex flex-col items-center gap-2 mb-10">
+            <h2 class="text-center text-3xl font-bold leading-tight sm:text-4xl text-zinc-900 dark:text-white">Números que comprovam o método</h2>
+          </header>
+          
+          <div class="grid grid-cols-2 gap-4 md:grid-cols-4 lg:gap-8 mb-16">
+            <div class="flex w-full flex-col items-start justify-center rounded-2xl border border-zinc-200 dark:border-brand-navy/30 bg-zinc-50 dark:bg-white/5 p-6 shadow-sm">
+              <h1 class="bg-gradient-to-r from-brand-orange-dark to-sky-600 dark:from-brand-orange-light dark:to-sky-400 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl">+R$ 10M</h1>
+              <p class="mt-2 text-sm font-semibold text-zinc-500 dark:text-zinc-400 sm:text-base">Faturamento Gerado</p>
+            </div>
+            <div class="flex w-full flex-col items-start justify-center rounded-2xl border border-zinc-200 dark:border-brand-navy/30 bg-zinc-50 dark:bg-white/5 p-6 shadow-sm">
+              <h1 class="bg-gradient-to-r from-brand-orange-dark to-sky-600 dark:from-brand-orange-light dark:to-sky-400 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl">+R$ 2M</h1>
+              <p class="mt-2 text-sm font-semibold text-zinc-500 dark:text-zinc-400 sm:text-base">Em Anúncios</p>
+            </div>
+            <div class="flex w-full flex-col items-start justify-center rounded-2xl border border-zinc-200 dark:border-brand-navy/30 bg-zinc-50 dark:bg-white/5 p-6 shadow-sm">
+              <h1 class="bg-gradient-to-r from-brand-orange-dark to-sky-600 dark:from-brand-orange-light dark:to-sky-400 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl">+15</h1>
+              <p class="mt-2 text-sm font-semibold text-zinc-500 dark:text-zinc-400 sm:text-base">E-commerces Escalados</p>
+            </div>
+            <div class="flex w-full flex-col items-start justify-center rounded-2xl border border-zinc-200 dark:border-brand-navy/30 bg-zinc-50 dark:bg-white/5 p-6 shadow-sm">
+              <h1 class="bg-gradient-to-r from-brand-orange-dark to-sky-600 dark:from-brand-orange-light dark:to-sky-400 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl">+350k</h1>
+              <p class="mt-2 text-sm font-semibold text-zinc-500 dark:text-zinc-400 sm:text-base">Pedidos Processados</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- A Prova e o Mecanismo Único -->
+      <section id="a-prova" class="bg-white dark:bg-brand-navy py-24 sm:py-32 relative overflow-hidden transition-colors duration-300 border-b border-zinc-200 dark:border-transparent">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(242,129,29,0.05),transparent_50%)] dark:bg-[radial-gradient(circle_at_50%_0%,rgba(242,129,29,0.1),transparent_50%)]"></div>
+        <div class="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
+          
+          <div class="mx-auto max-w-3xl text-center mb-16">
+            <div class="inline-flex items-center gap-2 rounded-full border border-zinc-200 dark:border-brand-navy/30 bg-zinc-50 dark:bg-white/5 px-3 py-1.5 mb-6">
+              <span class="h-2 w-2 rounded-full bg-brand-orange dark:bg-brand-orange-light"></span>
+              <span class="text-sm font-medium text-zinc-600 dark:text-zinc-300">O Nosso Mecanismo Único</span>
+            </div>
+            <h2 class="text-4xl font-semibold tracking-tight text-brand-navy dark:text-white sm:text-5xl">
+              Como uma loja foi de R$ 70k para R$ 180k sem colocar um centavo a mais em anúncios.
+            </h2>
+            <p class="mt-6 text-lg font-normal leading-8 text-zinc-600 dark:text-zinc-400">
+              O problema dessa loja não era o criativo, nem o público, nem o produto. Era que os 4 pilares da operação estavam completamente desconectados. O tráfego brigava com o cadastro, e o criativo não conversava com o funil.
+            </p>
+            <p class="mt-4 text-lg font-normal leading-8 text-zinc-600 dark:text-zinc-400">
+              Quando ativamos o <span class="text-zinc-900 dark:text-white font-semibold">Sistema Integrado de Escala</span>, o primeiro resultado apareceu em 11 dias: a taxa de conversão subiu 38% só com a otimização de checkout e retenção ativa. O budget de anúncio continuou exatamente o mesmo. O faturamento não.
+            </p>
+          </div>
+
+          <!-- 3 Engrenagens / Bullets in a Grid -->
+          <div class="mx-auto max-w-5xl">
+            <h3 class="text-2xl font-semibold text-brand-navy dark:text-white text-center mb-10">O que acontece na prática quando você vira a chave:</h3>
+            <div class="grid gap-6 md:grid-cols-3">
+              <div class="rounded-2xl border border-zinc-200 dark:border-brand-navy/30 bg-zinc-50 dark:bg-white/5 p-8 backdrop-blur text-center shadow-sm">
+                <div class="mx-auto bg-brand-orange/20 dark:bg-brand-orange/10 border border-brand-orange/30 dark:border-brand-orange/20 w-14 h-14 flex items-center justify-center rounded-2xl mb-6">
+                  <i data-lucide="eye" class="h-7 w-7 text-brand-orange-dark dark:text-brand-orange-light"></i>
+                </div>
+                <p class="text-base text-zinc-600 dark:text-zinc-300 leading-relaxed">Você entende por que o seu <strong class="text-zinc-900 dark:text-white">ROAS atual esconde prejuízos</strong> na sua margem líquida.</p>
+              </div>
+              <div class="rounded-2xl border border-zinc-200 dark:border-brand-navy/30 bg-zinc-50 dark:bg-white/5 p-8 backdrop-blur text-center shadow-sm">
+                <div class="mx-auto bg-brand-orange/20 dark:bg-brand-orange/10 border border-brand-orange/30 dark:border-brand-orange/20 w-14 h-14 flex items-center justify-center rounded-2xl mb-6">
+                  <i data-lucide="route" class="h-7 w-7 text-brand-orange-dark dark:text-brand-orange-light"></i>
+                </div>
+                <p class="text-base text-zinc-600 dark:text-zinc-300 leading-relaxed">Descobre a <strong class="text-zinc-900 dark:text-white">sequência exata de escala</strong> sem o risco de quebrar o seu estoque ou seu fluxo de caixa.</p>
+              </div>
+              <div class="rounded-2xl border border-zinc-200 dark:border-brand-navy/30 bg-zinc-50 dark:bg-white/5 p-8 backdrop-blur text-center shadow-sm">
+                <div class="mx-auto bg-brand-orange/20 dark:bg-brand-orange/10 border border-brand-orange/30 dark:border-brand-orange/20 w-14 h-14 flex items-center justify-center rounded-2xl mb-6">
+                  <i data-lucide="settings-2" class="h-7 w-7 text-brand-orange-dark dark:text-brand-orange-light"></i>
+                </div>
+                <p class="text-base text-zinc-600 dark:text-zinc-300 leading-relaxed">Aplica a <strong class="text-zinc-900 dark:text-white">fórmula das 3 engrenagens</strong> conectadas para maximizar o lucro no fim do mês.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- O Sistema -->
+      <section id="o-sistema" class="mx-auto max-w-7xl px-6 py-14 lg:px-8 lg:py-20 bg-zinc-50 dark:bg-white/5 rounded-[3rem] my-10 border border-zinc-200 dark:border-brand-navy/30 transition-colors duration-300">
+        <div class="mx-auto max-w-3xl text-center">
+          <h2 class="text-4xl font-semibold tracking-tight text-brand-navy dark:text-white sm:text-5xl">Como vamos rodar a sua operação</h2>
+          <p class="mt-4 text-lg font-normal leading-8 text-zinc-600 dark:text-zinc-400">
+            A gente assume o controle e integra todos os motores de crescimento da sua loja virtual.
+          </p>
+        </div>
+
+        <div class="mx-auto mt-16 max-w-5xl">
+          <div class="grid gap-8 md:grid-cols-2 mb-12">
+            <!-- Card 1: Integrações e Centralização -->
+            <article class="flex flex-col justify-start rounded-[2rem] p-8 md:p-10 bg-white dark:bg-white/5 border border-zinc-200 dark:border-brand-navy/30 shadow-sm transition-all hover:shadow-md">
+              <div class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-zinc-50 dark:bg-zinc-800 shadow-sm ring-1 ring-zinc-200 dark:ring-zinc-700">
+                <i data-lucide="network" class="h-7 w-7 text-brand-orange-dark dark:text-brand-orange-light"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-zinc-900 dark:text-white mb-4">Conexão Total</h3>
+              <p class="font-medium text-zinc-600 dark:text-zinc-400 text-base leading-relaxed">
+                Centralizamos todas as suas plataformas em uma única fonte de verdade. Do clique até o LTV. Conectamos nativamente Shopify, VTEX e Nuvemshop com Meta, Google e TikTok Ads para que seus relatórios não escondam o verdadeiro custo de aquisição.
+              </p>
+            </article>
+            
+            <!-- Card 2: Automação e IA -->
+            <article class="flex flex-col justify-start rounded-[2rem] p-8 md:p-10 bg-brand-navy dark:bg-white/5 border border-brand-navy/30 dark:border-brand-navy/30 shadow-xl dark:shadow-sm transition-all hover:shadow-2xl dark:hover:shadow-md">
+              <div class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-zinc-900 dark:bg-zinc-800 shadow-sm ring-1 ring-zinc-800 dark:ring-zinc-700">
+                <i data-lucide="bot" class="h-7 w-7 text-sky-400"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-white mb-4">Retenção com Inteligência</h3>
+              <p class="font-medium text-zinc-400 text-base leading-relaxed">
+                Automação e IA trabalhando 24/7 para recuperar vendas, responder dúvidas e forçar a recompra. Implementamos réguas de comunicação que transformam clientes únicos em compradores recorrentes, sem você gastar mais um centavo em tráfego.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <!-- Por que não somos uma agência comum (Diferenciais) -->
+      <section class="mx-auto max-w-7xl px-6 py-14 lg:px-8 lg:py-20">
+        <div class="mb-12">
+          <h2 class="text-3xl font-semibold tracking-tight text-brand-navy dark:text-white sm:text-4xl">Por que escolher a Laercom?</h2>
+          <p class="mt-4 max-w-2xl text-lg font-normal leading-8 text-zinc-600 dark:text-zinc-400">
+            Não somos uma agência de marketing genérica que vende curtidas. Somos estrategistas e engenheiros de e-commerce que trabalham como extensão do seu time.
+          </p>
+        </div>
+        <div class="grid gap-8 md:grid-cols-3">
+          <div class="rounded-2xl border border-zinc-200 dark:border-brand-navy/30 bg-white dark:bg-white/5 p-8 shadow-sm">
+            <i data-lucide="line-chart" class="h-8 w-8 text-brand-orange mb-4"></i>
+            <h3 class="text-lg font-semibold text-brand-navy dark:text-white mb-2">Dados, Sempre</h3>
+            <p class="text-sm text-zinc-600 dark:text-zinc-400">
+              Todas as decisões são tomadas com base em tracking avançado e atribuição correta. Sem maquiagem de métricas e sem achismo.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-zinc-200 dark:border-brand-navy/30 bg-white dark:bg-white/5 p-8 shadow-sm">
+            <i data-lucide="users" class="h-8 w-8 text-brand-orange mb-4"></i>
+            <h3 class="text-lg font-semibold text-brand-navy dark:text-white mb-2">Time Dedicado</h3>
+            <p class="text-sm text-zinc-600 dark:text-zinc-400">
+              Equipe multidisciplinar e gestor de conta humano. Você fala com estrategistas focados no seu projeto, não com chatbots ou estagiários.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-zinc-200 dark:border-brand-navy/30 bg-white dark:bg-white/5 p-8 shadow-sm">
+            <i data-lucide="shield-check" class="h-8 w-8 text-brand-orange mb-4"></i>
+            <h3 class="text-lg font-semibold text-brand-navy dark:text-white mb-2">Crescimento Sustentável</h3>
+            <p class="text-sm text-zinc-600 dark:text-zinc-400">
+              Nada de crescer e quebrar por estoque ou falta de caixa. Nosso planejamento garante que a escala seja feita com lucro líquido no bolso.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- O Processo (Mapa do Tesouro) -->
+      <section class="bg-zinc-50 dark:bg-white/5 py-16 lg:py-24 border-y border-zinc-200 dark:border-brand-navy/30">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl font-semibold tracking-tight text-brand-navy dark:text-white sm:text-4xl">Do diagnóstico ao resultado</h2>
+            <p class="mt-4 text-lg font-normal leading-8 text-zinc-600 dark:text-zinc-400">
+              Um processo estruturado de ponta a ponta. Cada etapa tem responsável, prazo e entregável.
+            </p>
+          </div>
+          <div class="grid gap-12 md:grid-cols-4 relative">
+            <!-- Connecting line for desktop -->
+            <div class="hidden md:block absolute top-6 left-12 right-12 h-0.5 bg-zinc-200 dark:bg-brand-navy/50 z-0"></div>
+            
+            <div class="relative z-10 text-center">
+              <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-brand-orange text-white font-bold text-lg mb-6 ring-4 ring-zinc-50 dark:ring-[#03152d]">1</div>
+              <h3 class="text-xl font-semibold text-brand-navy dark:text-white mb-3">Diagnóstico 360</h3>
+              <p class="text-sm text-zinc-600 dark:text-zinc-400">Analisamos seus relatórios de perto. Identificamos os maiores gargalos onde você perde dinheiro hoje.</p>
+            </div>
+            
+            <div class="relative z-10 text-center">
+              <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-brand-orange text-white font-bold text-lg mb-6 ring-4 ring-zinc-50 dark:ring-[#03152d]">2</div>
+              <h3 class="text-xl font-semibold text-brand-navy dark:text-white mb-3">Arquitetura Estratégica</h3>
+              <p class="text-sm text-zinc-600 dark:text-zinc-400">Montamos seu plano de ação: o que otimizar no site, como ajustar campanhas e recuperar LTV.</p>
+            </div>
+            
+            <div class="relative z-10 text-center">
+              <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-brand-orange text-white font-bold text-lg mb-6 ring-4 ring-zinc-50 dark:ring-[#03152d]">3</div>
+              <h3 class="text-xl font-semibold text-brand-navy dark:text-white mb-3">Implementação</h3>
+              <p class="text-sm text-zinc-600 dark:text-zinc-400">Nossa equipe bota a mão na massa. Arrumamos a casa, do trackeamento à automação de vendas.</p>
+            </div>
+            
+            <div class="relative z-10 text-center">
+              <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-brand-orange text-white font-bold text-lg mb-6 ring-4 ring-zinc-50 dark:ring-[#03152d]">4</div>
+              <h3 class="text-xl font-semibold text-brand-navy dark:text-white mb-3">Escala com Controle</h3>
+              <p class="text-sm text-zinc-600 dark:text-zinc-400">Com a estrutura validada, injetamos tráfego qualificado e escalamos a operação mantendo a margem de lucro.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Para quem é / Para quem não é -->
+      <section id="fit" class="mx-auto max-w-6xl px-6 py-14 lg:px-8 lg:py-20">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-semibold tracking-tight text-brand-navy dark:text-white sm:text-5xl">Vamos jogar limpo.</h2>
+          <p class="mt-4 text-lg font-normal leading-8 text-zinc-600 dark:text-zinc-400">
+            A gente trabalha com risco compartilhado (uma taxa fixa muito baixa e um percentual da sua loja). Por isso, somos cirúrgicos na escolha de quem colocamos pra dentro de casa.
+          </p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2">
+          <!-- Para quem é -->
+          <div class="rounded-[2rem] border border-brand-orange/30 dark:border-brand-orange/20 bg-brand-orange/10 dark:bg-brand-orange/5 p-8 shadow-sm">
+            <div class="flex items-center gap-4 mb-8">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-orange/20 dark:bg-brand-orange/10 border border-transparent dark:border-brand-orange/20">
+                <i data-lucide="thumbs-up" class="h-6 w-6 text-brand-orange-dark dark:text-brand-orange-light"></i>
+              </div>
+              <h3 class="text-2xl font-semibold text-brand-navy dark:text-white">Para quem É:</h3>
+            </div>
+            <ul class="space-y-5">
+              <li class="flex items-start gap-3">
+                <div class="bg-brand-orange/30 dark:bg-brand-orange/20 p-1 rounded-full mt-0.5">
+                  <i data-lucide="check" class="h-4 w-4 text-brand-orange-dark dark:text-brand-orange-light shrink-0"></i>
+                </div>
+                <span class="text-base text-zinc-700 dark:text-zinc-300">E-commerces já validados, faturando pelo menos R$ 50 mil por mês de forma consistente.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="bg-brand-orange/30 dark:bg-brand-orange/20 p-1 rounded-full mt-0.5">
+                  <i data-lucide="check" class="h-4 w-4 text-brand-orange-dark dark:text-brand-orange-light shrink-0"></i>
+                </div>
+                <span class="text-base text-zinc-700 dark:text-zinc-300">Donos de loja que estão cansados de agências tradicionais que só mostram métricas de vaidade.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="bg-brand-orange/30 dark:bg-brand-orange/20 p-1 rounded-full mt-0.5">
+                  <i data-lucide="check" class="h-4 w-4 text-brand-orange-dark dark:text-brand-orange-light shrink-0"></i>
+                </div>
+                <span class="text-base text-zinc-700 dark:text-zinc-300">Operações que têm produto bom, estoque pronto e vontade real de triplicar o tamanho com margem.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Para quem não é -->
+          <div class="rounded-[2rem] border border-rose-200 dark:border-rose-500/20 bg-rose-50/50 dark:bg-rose-500/5 p-8 shadow-sm">
+            <div class="flex items-center gap-4 mb-8">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-rose-100 dark:bg-rose-500/10 border border-transparent dark:border-rose-500/20">
+                <i data-lucide="thumbs-down" class="h-6 w-6 text-rose-600 dark:text-rose-400"></i>
+              </div>
+              <h3 class="text-2xl font-semibold text-brand-navy dark:text-white">Para quem NÃO É:</h3>
+            </div>
+            <ul class="space-y-5">
+              <li class="flex items-start gap-3">
+                <div class="bg-rose-200 dark:bg-rose-500/20 p-1 rounded-full mt-0.5">
+                  <i data-lucide="x" class="h-4 w-4 text-rose-700 dark:text-rose-400 shrink-0"></i>
+                </div>
+                <span class="text-base text-zinc-700 dark:text-zinc-300">Quem faz dropshipping aventureiro ou acabou de abrir a loja e ainda não tem um volume sólido de vendas.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="bg-rose-200 dark:bg-rose-500/20 p-1 rounded-full mt-0.5">
+                  <i data-lucide="x" class="h-4 w-4 text-rose-700 dark:text-rose-400 shrink-0"></i>
+                </div>
+                <span class="text-base text-zinc-700 dark:text-zinc-300">Quem está procurando apenas um "apertador de botão" barato para subir campanhas no Facebook.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="bg-rose-200 dark:bg-rose-500/20 p-1 rounded-full mt-0.5">
+                  <i data-lucide="x" class="h-4 w-4 text-rose-700 dark:text-rose-400 shrink-0"></i>
+                </div>
+                <span class="text-base text-zinc-700 dark:text-zinc-300">Empresários que não querem ajustar a casa e esperam um milagre financeiro apenas ligando anúncios.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="mx-auto max-w-4xl px-6 py-14 lg:px-8 lg:py-24">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-semibold tracking-tight text-brand-navy dark:text-white sm:text-4xl">Perguntas Frequentes</h2>
+          <p class="mt-4 text-lg font-normal leading-8 text-zinc-600 dark:text-zinc-400">
+            Respostas diretas sobre como operamos nos bastidores.
+          </p>
+        </div>
+        <div class="space-y-4">
+          <details class="group rounded-2xl border border-zinc-200 dark:border-brand-navy/30 bg-white dark:bg-white/5 p-6 shadow-sm transition hover:shadow-md [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex cursor-pointer items-center justify-between gap-1.5 text-zinc-900 dark:text-white">
+              <h2 class="font-semibold text-lg">Vocês atendem e-commerces que estão começando do zero?</h2>
+              <span class="relative h-5 w-5 shrink-0 text-zinc-500 dark:text-zinc-400">
+                <i data-lucide="plus" class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0 transition-opacity"></i>
+                <i data-lucide="minus" class="absolute inset-0 h-5 w-5 opacity-0 group-open:opacity-100 transition-opacity"></i>
+              </span>
+            </summary>
+            <p class="mt-4 leading-relaxed text-zinc-600 dark:text-zinc-400">
+              Não. Nosso modelo exige alta capacidade técnica e de engenharia para estruturar o ecossistema. Operações que ainda não validaram seus produtos geralmente não suportam nossa arquitetura. Atuamos com e-commerces que faturam pelo menos R$ 50.000 mensais de forma consistente.
+            </p>
+          </details>
+
+          <details class="group rounded-2xl border border-zinc-200 dark:border-brand-navy/30 bg-white dark:bg-white/5 p-6 shadow-sm transition hover:shadow-md [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex cursor-pointer items-center justify-between gap-1.5 text-zinc-900 dark:text-white">
+              <h2 class="font-semibold text-lg">Quanto custa para a Laercom gerenciar minha loja?</h2>
+              <span class="relative h-5 w-5 shrink-0 text-zinc-500 dark:text-zinc-400">
+                <i data-lucide="plus" class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0 transition-opacity"></i>
+                <i data-lucide="minus" class="absolute inset-0 h-5 w-5 opacity-0 group-open:opacity-100 transition-opacity"></i>
+              </span>
+            </summary>
+            <p class="mt-4 leading-relaxed text-zinc-600 dark:text-zinc-400">
+              Operamos com "skin in the game". Temos uma taxa fixa operacional irrisória para manter a estrutura e um fee percentual atrelado ao crescimento que geramos. O risco é compartilhado: nós só ganhamos de verdade se você lucrar com previsibilidade.
+            </p>
+          </details>
+
+          <details class="group rounded-2xl border border-zinc-200 dark:border-brand-navy/30 bg-white dark:bg-white/5 p-6 shadow-sm transition hover:shadow-md [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex cursor-pointer items-center justify-between gap-1.5 text-zinc-900 dark:text-white">
+              <h2 class="font-semibold text-lg">Como funciona a Auditoria 360 inicial?</h2>
+              <span class="relative h-5 w-5 shrink-0 text-zinc-500 dark:text-zinc-400">
+                <i data-lucide="plus" class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0 transition-opacity"></i>
+                <i data-lucide="minus" class="absolute inset-0 h-5 w-5 opacity-0 group-open:opacity-100 transition-opacity"></i>
+              </span>
+            </summary>
+            <p class="mt-4 leading-relaxed text-zinc-600 dark:text-zinc-400">
+              Após preencher a aplicação abaixo, filtramos sua loja. Se aprovado, agendamos uma imersão técnica gratuita de 45 minutos. Nela, abrimos seus relatórios e mostramos os gargalos exatos onde sua operação está perdendo dinheiro. Mesmo que você decida não fechar conosco, sairá com um mapa de escala.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <!-- CTA / Contact Form -->
+      <section id="auditoria" class="mx-auto max-w-7xl px-6 pb-16 pt-6 lg:px-8 lg:pb-24">
+        <div class="overflow-hidden rounded-[2rem] border border-zinc-200 dark:border-brand-navy/30 bg-brand-navy dark:bg-white/5 shadow-xl">
+          <div class="relative px-6 py-16 sm:px-10 lg:px-14 lg:py-20">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(242,107,29,0.20),transparent_25%),radial-gradient(circle_at_80%_30%,rgba(168,85,247,0.12),transparent_25%),radial-gradient(circle_at_50%_90%,rgba(242,129,29,0.10),transparent_25%)] dark:opacity-50"></div>
+            
+            <div class="relative grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
+              <div>
+                <div class="inline-flex items-center gap-2 rounded-full border border-white/10 dark:border-white/5 bg-white/5 px-3 py-1.5 mb-4">
+                  <span class="h-2 w-2 rounded-full bg-brand-orange-light"></span>
+                  <span class="text-sm font-medium text-zinc-300 dark:text-zinc-400">Vagas estritamente limitadas pela operação</span>
+                </div>
+                <h2 class="text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+                  Sua loja está pronta para uma Auditoria 360?
+                </h2>
+                <p class="mt-6 max-w-xl text-lg font-normal leading-8 text-zinc-300 dark:text-zinc-400">
+                  Isso não é um papo de vendedor. É uma análise técnica de verdade para te mostrar os erros exatos que estão comendo a sua margem de lucro todo dia.
+                </p>
+                <p class="mt-4 max-w-xl text-lg font-normal leading-8 text-zinc-300 dark:text-zinc-400">
+                  Preencha o formulário abaixo. Vamos processar seus dados na hora e, se o seu negócio tiver o perfil que a gente busca para escalar, entraremos em contato para fazer o seu diagnóstico.
+                </p>
+              </div>
+
+              <!-- Form -->
+              <div class="rounded-[1.5rem] bg-white dark:bg-zinc-800 p-6 sm:p-8 border border-transparent dark:border-zinc-700/50">
+                <form class="space-y-4">
+                  <div>
+                    <label for="nome" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Responsável pela Operação</label>
+                    <input type="text" id="nome" class="mt-1 block w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-white/5 px-4 py-2.5 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-900 dark:focus:border-white focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-white" placeholder="Seu nome completo">
+                  </div>
+                  <div>
+                    <label for="url" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">URL do seu E-commerce</label>
+                    <input type="url" id="url" class="mt-1 block w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-white/5 px-4 py-2.5 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-900 dark:focus:border-white focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-white" placeholder="https://sualoja.com.br">
+                  </div>
+                  <div>
+                    <label for="telefone" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">WhatsApp para contato</label>
+                    <input type="tel" id="telefone" class="mt-1 block w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-white/5 px-4 py-2.5 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-900 dark:focus:border-white focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-white" placeholder="(11) 90000-0000">
+                  </div>
+                  <div>
+                    <label for="faturamento" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Momento atual de faturamento</label>
+                    <select id="faturamento" class="mt-1 block w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-white/5 px-4 py-2.5 text-zinc-900 dark:text-white focus:border-zinc-900 dark:focus:border-white focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-white">
+                      <option disabled selected value="">Selecione seu momento atual...</option>
+                      <option class="bg-white dark:bg-white/5 text-zinc-900 dark:text-zinc-100">Até R$ 50 mil</option>
+                      <option class="bg-white dark:bg-white/5 text-zinc-900 dark:text-zinc-100">De R$ 50 mil a R$ 200 mil</option>
+                      <option class="bg-white dark:bg-white/5 text-zinc-900 dark:text-zinc-100">De R$ 200 mil a R$ 500 mil</option>
+                      <option class="bg-white dark:bg-white/5 text-zinc-900 dark:text-zinc-100">Acima de R$ 1 milhão</option>
+                    </select>
+                  </div>
+                  <button type="submit" class="mt-2 w-full rounded-xl bg-brand-navy dark:bg-white px-4 py-3.5 text-sm font-semibold text-white dark:text-brand-navy shadow-sm transition hover:bg-zinc-800 dark:hover:bg-zinc-200">
+                    Enviar Aplicação Agora
+                  </button>
+                  <p class="text-xs text-center text-zinc-500 dark:text-zinc-400 mt-2">Fique tranquilo, preencher o formulário é 100% gratuito.</p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-zinc-200 dark:border-white/10 bg-white dark:bg-brand-navy transition-colors duration-300">
+      <div class="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-8 text-sm font-medium text-zinc-500 dark:text-zinc-400 sm:flex-row sm:items-center sm:justify-between lg:px-8">
+        <div>© 2026 Laercom. Focados em rentabilidade real.</div>
+        <div class="flex items-center gap-6">
+          <a href="#" class="transition hover:text-zinc-900 dark:hover:text-white">Termos</a>
+          <a href="#" class="transition hover:text-zinc-900 dark:hover:text-white">Privacidade</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    lucide.createIcons({
+      attrs: {
+        "stroke-width": 1.5
+      }
+    });
+
+    // Theme Toggle Logic
+    var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    // Change the icons inside the button based on previous settings
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        themeToggleLightIcon.classList.remove('hidden');
+    } else {
+        themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    var themeToggleBtn = document.getElementById('theme-toggle');
+
+    themeToggleBtn.addEventListener('click', function() {
+        // toggle icons inside button
+        themeToggleDarkIcon.classList.toggle('hidden');
+        themeToggleLightIcon.classList.toggle('hidden');
+
+        // if set via local storage previously
+        if (localStorage.getItem('color-theme')) {
+            if (localStorage.getItem('color-theme') === 'light') {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            }
+        // if NOT set via local storage previously
+        } else {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        }
+    });
+  </script>
+</body>
+</html>
