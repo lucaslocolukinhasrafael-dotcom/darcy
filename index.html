@@ -495,26 +495,26 @@
 
               <!-- Form -->
               <div class="rounded-[1.5rem] bg-white dark:bg-zinc-800 p-6 sm:p-8 border border-transparent dark:border-zinc-700/50">
-                <form class="space-y-4">
+                <form id="lead-form" class="space-y-4">
                   <div>
                     <label for="nome" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Nome Completo</label>
-                    <input type="text" id="nome" class="mt-1 block w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-white/5 px-4 py-2.5 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-900 dark:focus:border-white focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-white" placeholder="Seu nome completo">
+                    <input type="text" id="nome" required class="mt-1 block w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-white/5 px-4 py-2.5 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-900 dark:focus:border-white focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-white" placeholder="Seu nome completo">
                   </div>
                   <div>
                     <label for="cargo" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Cargo</label>
-                    <input type="text" id="cargo" class="mt-1 block w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-white/5 px-4 py-2.5 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-900 dark:focus:border-white focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-white" placeholder="Seu cargo na empresa">
+                    <input type="text" id="cargo" required class="mt-1 block w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-white/5 px-4 py-2.5 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-900 dark:focus:border-white focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-white" placeholder="Seu cargo na empresa">
                   </div>
                   <div>
                     <label for="url" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">URL da sua Loja Virtual</label>
-                    <input type="url" id="url" class="mt-1 block w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-white/5 px-4 py-2.5 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-900 dark:focus:border-white focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-white" placeholder="https://sualoja.com.br">
+                    <input type="url" id="url" required class="mt-1 block w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-white/5 px-4 py-2.5 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-900 dark:focus:border-white focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-white" placeholder="https://sualoja.com.br">
                   </div>
                   <div>
                     <label for="telefone" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">WhatsApp</label>
-                    <input type="tel" id="telefone" class="mt-1 block w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-white/5 px-4 py-2.5 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-900 dark:focus:border-white focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-white" placeholder="(11) 90000-0000">
+                    <input type="tel" id="telefone" required class="mt-1 block w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-white/5 px-4 py-2.5 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-900 dark:focus:border-white focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-white" placeholder="(11) 90000-0000">
                   </div>
                   <div>
                     <label for="faturamento" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Faturamento Mensal</label>
-                    <select id="faturamento" class="mt-1 block w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-white/5 px-4 py-2.5 text-zinc-900 dark:text-white focus:border-zinc-900 dark:focus:border-white focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-white">
+                    <select id="faturamento" required class="mt-1 block w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-white/5 px-4 py-2.5 text-zinc-900 dark:text-white focus:border-zinc-900 dark:focus:border-white focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-white">
                       <option disabled selected value="">Selecione seu faturamento atual...</option>
                       <option class="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100">Até R$ 30 mil</option>
                       <option class="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100">De R$ 30 mil a R$ 200 mil</option>
@@ -524,11 +524,12 @@
                   </div>
                   <div>
                     <label for="mensagem" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Fale Mais Sobre o Seu Negócio</label>
-                    <textarea id="mensagem" rows="3" class="mt-1 block w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-white/5 px-4 py-2.5 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-900 dark:focus:border-white focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-white" placeholder="Escreva aqui..."></textarea>
+                    <textarea id="mensagem" required rows="3" class="mt-1 block w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-white/5 px-4 py-2.5 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-900 dark:focus:border-white focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-white" placeholder="Escreva aqui..."></textarea>
                   </div>
-                  <button type="submit" class="mt-2 w-full rounded-xl bg-brand-orange px-4 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-orange-dark">
+                  <button type="submit" id="btn-submit" class="mt-2 w-full rounded-xl bg-brand-orange px-4 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-orange-dark flex justify-center items-center">
                     Enviar Aplicação Agora
                   </button>
+                  <p id="form-success" class="hidden text-sm text-green-600 dark:text-green-400 font-medium text-center mt-2">Aplicação enviada com sucesso! Entraremos em contato em breve.</p>
                   <p class="text-xs text-center text-zinc-500 dark:text-zinc-400 mt-2">Fique tranquilo, preencher o formulário é 100% gratuito.</p>
                 </form>
               </div>
@@ -559,22 +560,18 @@
     // Theme Toggle Logic
     var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
     var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    var themeToggleBtn = document.getElementById('theme-toggle');
 
-    // Change the icons inside the button based on previous settings
     if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         themeToggleLightIcon.classList.remove('hidden');
     } else {
         themeToggleDarkIcon.classList.remove('hidden');
     }
 
-    var themeToggleBtn = document.getElementById('theme-toggle');
-
     themeToggleBtn.addEventListener('click', function() {
-        // toggle icons inside button
         themeToggleDarkIcon.classList.toggle('hidden');
         themeToggleLightIcon.classList.toggle('hidden');
 
-        // if set via local storage previously
         if (localStorage.getItem('color-theme')) {
             if (localStorage.getItem('color-theme') === 'light') {
                 document.documentElement.classList.add('dark');
@@ -583,7 +580,6 @@
                 document.documentElement.classList.remove('dark');
                 localStorage.setItem('color-theme', 'light');
             }
-        // if NOT set via local storage previously
         } else {
             if (document.documentElement.classList.contains('dark')) {
                 document.documentElement.classList.remove('dark');
@@ -594,6 +590,60 @@
             }
         }
     });
+
+    // Form Submission Logic
+    const form = document.getElementById('lead-form');
+    const btnSubmit = document.getElementById('btn-submit');
+    const formSuccess = document.getElementById('form-success');
+
+    // COLOQUE AQUI A SUA URL DO WEBHOOK DO MAKE:
+    const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/37sh4g72duiwz3sihu3devbiwgrnno7b';
+
+    if(form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        if (MAKE_WEBHOOK_URL === 'COLE_AQUI_A_URL_DO_MAKE') {
+          alert('Por favor, configure a URL do Webhook do Make no arquivo HTML antes de enviar!');
+          return;
+        }
+
+        const originalBtnText = btnSubmit.innerHTML;
+        btnSubmit.innerHTML = '<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Enviando...';
+        btnSubmit.disabled = true;
+
+        const data = {
+          nome: document.getElementById('nome').value,
+          cargo: document.getElementById('cargo').value,
+          url: document.getElementById('url').value,
+          telefone: document.getElementById('telefone').value,
+          faturamento: document.getElementById('faturamento').value,
+          mensagem: document.getElementById('mensagem').value,
+          data_envio: new Date().toISOString()
+        };
+
+        try {
+          await fetch(MAKE_WEBHOOK_URL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+          });
+          
+          form.reset();
+          form.classList.add('hidden');
+          formSuccess.classList.remove('hidden');
+          
+        } catch (error) {
+          alert('Ocorreu um erro ao enviar. Tente novamente.');
+          console.error('Webhook error:', error);
+        } finally {
+          btnSubmit.innerHTML = originalBtnText;
+          btnSubmit.disabled = false;
+        }
+      });
+    }
   </script>
 </body>
 </html>
