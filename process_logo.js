@@ -16,6 +16,9 @@ async function processLogo() {
     }
   });
   
+  // Crop transparent edges
+  lightLogo.autocrop();
+  
   await lightLogo.write('assets/logo-light.png');
   
   // Create dark logo
@@ -35,7 +38,7 @@ async function processLogo() {
   });
   
   await darkLogo.write('assets/logo-dark.png');
-  console.log("Logos processed!");
+  console.log("Logos processed and cropped!");
 }
 
 processLogo();
