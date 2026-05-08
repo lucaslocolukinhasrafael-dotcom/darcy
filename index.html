@@ -529,9 +529,17 @@
                   <button type="submit" id="btn-submit" class="mt-2 w-full rounded-xl bg-brand-orange px-4 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-orange-dark flex justify-center items-center">
                     Enviar Aplicação Agora
                   </button>
-                  <p id="form-success" class="hidden text-sm text-green-600 dark:text-green-400 font-medium text-center mt-2">Aplicação enviada com sucesso! Entraremos em contato em breve.</p>
                   <p class="text-xs text-center text-zinc-500 dark:text-zinc-400 mt-2">Fique tranquilo, preencher o formulário é 100% gratuito.</p>
                 </form>
+                <div id="form-success" class="hidden flex-col items-center justify-center text-center py-8">
+                  <div class="mb-4 rounded-full bg-green-100 dark:bg-green-900/30 p-3">
+                    <svg class="h-8 w-8 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-zinc-900 dark:text-white mb-2">Aplicação Recebida!</h3>
+                  <p class="text-zinc-600 dark:text-zinc-400">Nossa equipe vai analisar seus dados e entrar em contato em breve.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -634,6 +642,7 @@
           form.reset();
           form.classList.add('hidden');
           formSuccess.classList.remove('hidden');
+          formSuccess.classList.add('flex');
           
         } catch (error) {
           alert('Ocorreu um erro ao enviar. Tente novamente.');
