@@ -506,7 +506,7 @@
                   </div>
                   <div>
                     <label for="url" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">URL da sua Loja Virtual</label>
-                    <input type="url" id="url" required class="mt-1 block w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-white/5 px-4 py-2.5 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-900 dark:focus:border-white focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-white" placeholder="https://sualoja.com.br">
+                    <input type="text" id="url" required class="mt-1 block w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-white/5 px-4 py-2.5 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-900 dark:focus:border-white focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-white" placeholder="sualoja.com.br">
                   </div>
                   <div>
                     <label for="telefone" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">WhatsApp</label>
@@ -627,7 +627,7 @@
           telefone: document.getElementById('telefone').value,
           faturamento: document.getElementById('faturamento').value,
           mensagem: document.getElementById('mensagem').value,
-          data_envio: new Date().toISOString()
+          data_envio: new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })
         };
 
         try {
