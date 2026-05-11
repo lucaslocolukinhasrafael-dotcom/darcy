@@ -653,6 +653,13 @@
             body: JSON.stringify(data)
           });
           
+          // GTM Custom Event tracking
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            'event': 'form_submission_success',
+            'form_id': 'lead-form'
+          });
+
           form.reset();
           form.classList.add('hidden');
           formSuccess.classList.remove('hidden');
