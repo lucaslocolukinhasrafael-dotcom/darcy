@@ -110,6 +110,32 @@
       </div>
     </header>
 
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 z-[100] hidden md:hidden">
+      <!-- Backdrop -->
+      <div class="absolute inset-0 bg-zinc-900/60 backdrop-blur-sm"></div>
+      <!-- Panel -->
+      <div class="absolute right-0 top-0 h-full w-4/5 max-w-sm bg-white dark:bg-brand-navy shadow-2xl transition-transform duration-300 translate-x-full" id="mobile-menu-panel">
+        <div class="flex flex-col h-full">
+          <div class="flex items-center justify-between p-6 border-b border-zinc-100 dark:border-white/10">
+            <span class="font-bold text-xl text-brand-orange">LAERCOM</span>
+            <button id="close-menu-button" class="p-2 text-zinc-500 dark:text-zinc-400">
+              <i data-lucide="x" class="w-7 h-7"></i>
+            </button>
+          </div>
+          <nav class="flex-1 px-6 py-8 space-y-6">
+            <a href="#o-gargalo" class="mobile-nav-link block text-lg font-medium text-zinc-900 dark:text-white hover:text-brand-orange transition-colors">O Gargalo</a>
+            <a href="#a-prova" class="mobile-nav-link block text-lg font-medium text-zinc-900 dark:text-white hover:text-brand-orange transition-colors">O Método</a>
+            <a href="#o-sistema" class="mobile-nav-link block text-lg font-medium text-zinc-900 dark:text-white hover:text-brand-orange transition-colors">Benefícios</a>
+            <a href="#faq" class="mobile-nav-link block text-lg font-medium text-zinc-900 dark:text-white hover:text-brand-orange transition-colors">FAQ</a>
+          </nav>
+          <div class="p-6 border-t border-zinc-100 dark:border-white/10">
+            <a href="#auditoria" class="mobile-nav-link flex w-full justify-center rounded-full bg-brand-orange py-4 text-center text-base font-semibold text-white shadow-lg shadow-brand-orange/20">Falar com um Especialista</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <main class="relative z-10">
       <!-- Hero Section -->
       <section class="mx-auto max-w-7xl px-6 pb-14 pt-10 lg:px-8 lg:pt-16">
@@ -551,7 +577,7 @@
                   </div>
                   <div>
                     <label for="url" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">URL da sua Loja Virtual</label>
-                    <input type="url" id="url" required class="mt-1 block w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-white/5 px-4 py-2.5 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-900 dark:focus:border-white focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-white" placeholder="https://sualoja.com.br">
+                    <input type="text" id="url" required class="mt-1 block w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-white/5 px-4 py-2.5 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-zinc-900 dark:focus:border-white focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-white" placeholder="sualoja.com.br">
                   </div>
                   <div>
                     <label for="telefone" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">WhatsApp</label>
@@ -595,15 +621,14 @@
     <footer class="border-t border-zinc-200 dark:border-white/10 bg-white dark:bg-brand-navy transition-colors duration-300">
       <div class="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-8 text-sm font-medium text-zinc-500 dark:text-zinc-400 sm:flex-row sm:items-center sm:justify-between lg:px-8">
         <div>© 2026 Laercom. Focados em rentabilidade real.</div>
-        <div class="flex items-center gap-6">
-          <a href="#" class="transition hover:text-zinc-900 dark:hover:text-white">Termos</a>
-          <a href="#" class="transition hover:text-zinc-900 dark:hover:text-white">Privacidade</a>
-        </div>
+        <ul class="flex items-center gap-6">
+          <li><a href="termos.html" class="text-sm text-zinc-500 dark:text-zinc-400 hover:text-brand-orange transition-colors">Termos de Uso</a></li>
+          <li><a href="privacidade.html" class="text-sm text-zinc-500 dark:text-zinc-400 hover:text-brand-orange transition-colors">Política de Privacidade</a></li>
+        </ul>
       </div>
     </footer>
   </div>
 
-  <script>
     // Lucide initialization moved to bottom script block for performance
 
     // Theme Toggle Logic
@@ -711,12 +736,41 @@
       }
     });
 
-    // Mobile menu simple scroll
-    document.getElementById('mobile-menu-button')?.addEventListener('click', () => {
-      // Toggle a simple mobile menu or just scroll to CTA
-      const section = document.getElementById('auditoria');
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
+    // Mobile Menu Toggling
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+    const mobileMenuPanel = document.getElementById('mobile-menu-panel');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const closeMenuButton = document.getElementById('close-menu-button');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    function openMenu() {
+      mobileMenuOverlay.classList.remove('hidden');
+      setTimeout(() => {
+        mobileMenuPanel.classList.remove('translate-x-full');
+      }, 10);
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      mobileMenuPanel.classList.add('translate-x-full');
+      setTimeout(() => {
+        mobileMenuOverlay.classList.add('hidden');
+      }, 300);
+      document.body.style.overflow = '';
+    }
+
+    mobileMenuButton?.addEventListener('click', openMenu);
+    closeMenuButton?.addEventListener('click', closeMenu);
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Auto-prefix URL input
+    const urlInput = document.getElementById('url');
+    urlInput?.addEventListener('blur', (e) => {
+      let val = e.target.value.trim();
+      if (val && !val.startsWith('http://') && !val.startsWith('https://')) {
+        e.target.value = 'https://' + val;
       }
     });
 
