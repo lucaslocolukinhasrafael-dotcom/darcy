@@ -48,12 +48,12 @@ async function createFavicon() {
   // Crop the icon part
   const icon = image.clone().crop({ x: 0, y: 0, w: gapX, h: h }).autocrop();
   
-  // Create a 64x64 container and center the icon
-  const size = 64;
+  // Create a 180x180 container and center the icon with minimal padding
+  const size = 180;
   const squareIcon = icon.clone().contain({ w: size, h: size });
   
   await squareIcon.write('assets/favicon.png');
-  console.log("Favicon created at assets/favicon.png");
+  console.log("Favicon updated at assets/favicon.png (180x180)");
 }
 
 createFavicon().catch(err => console.error(err));
