@@ -68,8 +68,6 @@
     }
   </script>
   <!-- Non-blocking scripts moved to bottom -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body class="bg-zinc-50 dark:bg-brand-navy text-brand-navy dark:text-zinc-50 antialiased transition-colors duration-300 selection:bg-brand-orange/30 selection:text-brand-orange-dark font-[Inter]">
@@ -137,7 +135,10 @@
         <div class="relative mx-auto mt-16 max-w-5xl">
           <div class="absolute inset-x-10 -top-8 h-40 rounded-full bg-gradient-to-r from-brand-orange/30 via-sky-200/40 to-violet-200/50 dark:from-brand-orange/20 dark:via-sky-500/20 dark:to-violet-500/20 blur-3xl"></div>
           <div class="relative overflow-hidden rounded-[2rem] border border-zinc-200 dark:border-brand-navy/30 bg-white/95 dark:bg-white/5 p-3 shadow-[0_20px_80px_-20px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_80px_-20px_rgba(0,0,0,0.5)] backdrop-blur">
-            <img src="./site com imagens, animações, elementos e efeitos/images/image.jpg" alt="Painel de Controle Laercom mostrando métricas de ROAS e faturamento" fetchpriority="high" width="1024" height="600" class="w-full rounded-[1.5rem] border border-zinc-200 dark:border-brand-navy/30 object-cover opacity-90 dark:opacity-80 transition-opacity">
+            <picture>
+              <source srcset="assets/hero-mobile.jpg" media="(max-width: 640px)">
+              <img src="./site com imagens, animações, elementos e efeitos/images/image.jpg" alt="Painel de Controle Laercom mostrando métricas de ROAS e faturamento" fetchpriority="high" decoding="async" width="1024" height="600" class="w-full rounded-[1.5rem] border border-zinc-200 dark:border-brand-navy/30 object-cover opacity-90 dark:opacity-80 transition-opacity">
+            </picture>
           </div>
         </div>
       </section>
