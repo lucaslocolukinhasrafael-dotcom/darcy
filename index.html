@@ -12,7 +12,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Laercom | O Sistema Integrado de Escala para E-commerce</title>
+  <meta name="description" content="A Laercom transforma a operação do seu e-commerce com inteligência e escala. Descubra o gargalo oculto que trava o seu crescimento e maximize sua lucratividade.">
+  <meta name="keywords" content="e-commerce, escala, gestão de tráfego, lucratividade, sistema integrado, laercom">
+  <meta name="author" content="Laercom">
+  <link rel="canonical" href="https://laercom.com.br/">
+  <meta name="theme-color" content="#041E40">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://laercom.com.br/">
+  <meta property="og:title" content="Laercom | O Sistema Integrado de Escala para E-commerce">
+  <meta property="og:description" content="Transformamos a operação do seu e-commerce com inteligência e escala. Descubra o gargalo oculto que trava o seu faturamento.">
+  <meta property="og:image" content="https://laercom.com.br/assets/logo-dark-opt.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://laercom.com.br/">
+  <meta property="twitter:title" content="Laercom | O Sistema Integrado de Escala para E-commerce">
+  <meta property="twitter:description" content="Transformamos a operação do seu e-commerce com inteligência e escala. Descubra o gargalo oculto que trava o seu faturamento.">
+  <meta property="twitter:image" content="https://laercom.com.br/assets/logo-dark-opt.png">
+
   <link rel="icon" type="image/png" href="assets/favicon.png">
+  
+  <!-- Preconnect and Preload -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style">
+  <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
+  
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -24,8 +51,8 @@
               navy: '#041E40',
               orange: {
                 light: '#F2811D',
-                DEFAULT: '#F26B1D',
-                dark: '#F2561D'
+                DEFAULT: '#D95F1A',
+                dark: '#BF5417'
               },
               white: '#F2F2F2'
             }
@@ -40,7 +67,7 @@
         document.documentElement.classList.remove('dark');
     }
   </script>
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Non-blocking scripts moved to bottom -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -58,10 +85,10 @@
 
     <header class="relative z-10">
       <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8 border-b border-transparent dark:border-white/10">
-        <a href="#" class="flex items-center gap-3 -mt-2 md:-mt-3">
+        <a href="/" class="flex items-center gap-3 -mt-2 md:-mt-3">
           <!-- Original Logo mapped for light/dark mode -->
-          <img src="assets/logo-light.png" alt="Laercom Logo" class="h-20 md:h-24 w-auto dark:hidden transition-all duration-300">
-          <img src="assets/logo-dark.png" alt="Laercom Logo" class="h-20 md:h-24 w-auto hidden dark:block transition-all duration-300">
+          <img src="assets/logo-light-opt.png" alt="Laercom Logo" width="192" height="80" class="h-20 md:h-24 w-auto dark:hidden transition-all duration-300">
+          <img src="assets/logo-dark-opt.png" alt="Laercom Logo" width="192" height="80" class="h-20 md:h-24 w-auto hidden dark:block transition-all duration-300">
         </a>
 
         <nav class="hidden items-center gap-8 md:flex">
@@ -73,11 +100,14 @@
 
         <div class="flex items-center gap-3">
           <!-- Dark Mode Toggle Button -->
-          <button id="theme-toggle" type="button" class="text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full p-2 transition-colors">
+          <button id="theme-toggle" type="button" aria-label="Alternar tema claro/escuro" class="text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full p-2 transition-colors">
             <i data-lucide="moon" id="theme-toggle-dark-icon" class="hidden w-5 h-5"></i>
             <i data-lucide="sun" id="theme-toggle-light-icon" class="hidden w-5 h-5"></i>
           </button>
-          <a href="#auditoria" class="inline-flex rounded-full bg-brand-orange px-5 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-brand-orange-dark">Falar com um Especialista</a>
+          <button id="mobile-menu-button" type="button" aria-label="Abrir menu" class="md:hidden text-zinc-500 dark:text-zinc-400 p-2">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+          <a href="#auditoria" class="hidden sm:inline-flex rounded-full bg-brand-orange px-5 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-brand-orange-dark">Falar com um Especialista</a>
         </div>
       </div>
     </header>
@@ -107,7 +137,7 @@
         <div class="relative mx-auto mt-16 max-w-5xl">
           <div class="absolute inset-x-10 -top-8 h-40 rounded-full bg-gradient-to-r from-brand-orange/30 via-sky-200/40 to-violet-200/50 dark:from-brand-orange/20 dark:via-sky-500/20 dark:to-violet-500/20 blur-3xl"></div>
           <div class="relative overflow-hidden rounded-[2rem] border border-zinc-200 dark:border-brand-navy/30 bg-white/95 dark:bg-white/5 p-3 shadow-[0_20px_80px_-20px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_80px_-20px_rgba(0,0,0,0.5)] backdrop-blur">
-            <img src="./site com imagens, animações, elementos e efeitos/images/image.jpg" alt="Visão Geral do Sistema Laercom" class="w-full rounded-[1.5rem] border border-zinc-200 dark:border-brand-navy/30 object-cover opacity-90 dark:opacity-80 transition-opacity">
+            <img src="./site com imagens, animações, elementos e efeitos/images/image.jpg" alt="Painel de Controle Laercom mostrando métricas de ROAS e faturamento" fetchpriority="high" width="1024" height="600" class="w-full rounded-[1.5rem] border border-zinc-200 dark:border-brand-navy/30 object-cover opacity-90 dark:opacity-80 transition-opacity">
           </div>
         </div>
       </section>
@@ -119,25 +149,25 @@
           </div>
           <div class="flex max-w-6xl mx-auto flex-wrap items-center justify-center gap-4">
             <div class="flex items-center gap-2 rounded-full border border-zinc-200 dark:border-brand-navy/30 bg-white dark:bg-white/5 px-4 py-2 text-sm font-medium text-zinc-700 dark:text-zinc-200 shadow-sm transition hover:shadow-md">
-              <img src="./site com imagens, animações, elementos e efeitos/images/meta-circle-logo.svg" alt="Meta" class="h-6 w-6"> Meta Ads
+              <img src="./site com imagens, animações, elementos e efeitos/images/meta-circle-logo.svg" alt="Logo do Meta Ads" width="24" height="24" loading="lazy"> Meta Ads
             </div>
             <div class="flex items-center gap-2 rounded-full border border-zinc-200 dark:border-brand-navy/30 bg-white dark:bg-white/5 px-4 py-2 text-sm font-medium text-zinc-700 dark:text-zinc-200 shadow-sm transition hover:shadow-md">
-              <img src="./site com imagens, animações, elementos e efeitos/images/google-circle-logo.svg" alt="Google" class="h-6 w-6"> Google Ads
+              <img src="./site com imagens, animações, elementos e efeitos/images/google-circle-logo.svg" alt="Logo do Google Ads" width="24" height="24" loading="lazy"> Google Ads
             </div>
             <div class="flex items-center gap-2 rounded-full border border-zinc-200 dark:border-brand-navy/30 bg-white dark:bg-white/5 px-4 py-2 text-sm font-medium text-zinc-700 dark:text-zinc-200 shadow-sm transition hover:shadow-md">
-              <img src="./site com imagens, animações, elementos e efeitos/images/wbuy-circle-logo.svg" alt="Wbuy" class="h-6 w-6"> Wbuy
+              <img src="./site com imagens, animações, elementos e efeitos/images/wbuy-circle-logo.svg" alt="Logo da Wbuy" width="24" height="24" loading="lazy"> Wbuy
             </div>
             <div class="flex items-center gap-2 rounded-full border border-zinc-200 dark:border-brand-navy/30 bg-white dark:bg-white/5 px-4 py-2 text-sm font-medium text-zinc-700 dark:text-zinc-200 shadow-sm transition hover:shadow-md">
-              <img src="./site com imagens, animações, elementos e efeitos/images/yampi-icon.png" alt="Yampi" class="h-6 w-6 rounded-full"> Yampi
+              <img src="./site com imagens, animações, elementos e efeitos/images/yampi-icon.png" alt="Logo da Yampi" width="24" height="24" loading="lazy" class="rounded-full"> Yampi
             </div>
             <div class="flex items-center gap-2 rounded-full border border-zinc-200 dark:border-brand-navy/30 bg-white dark:bg-white/5 px-4 py-2 text-sm font-medium text-zinc-700 dark:text-zinc-200 shadow-sm transition hover:shadow-md">
-              <img src="./site com imagens, animações, elementos e efeitos/images/edrone-icon.png" alt="Edrone" class="h-6 w-6 rounded-full"> Edrone
+              <img src="./site com imagens, animações, elementos e efeitos/images/edrone-icon.png" alt="Logo da Edrone" width="24" height="24" loading="lazy" class="rounded-full"> Edrone
             </div>
             <div class="flex items-center gap-2 rounded-full border border-zinc-200 dark:border-brand-navy/30 bg-white dark:bg-white/5 px-4 py-2 text-sm font-medium text-zinc-700 dark:text-zinc-200 shadow-sm transition hover:shadow-md">
-              <img src="./site com imagens, animações, elementos e efeitos/images/pinterest-circle-logo.svg" alt="Pinterest" class="h-6 w-6"> Pinterest Ads
+              <img src="./site com imagens, animações, elementos e efeitos/images/pinterest-circle-logo.svg" alt="Logo do Pinterest Ads" width="24" height="24" loading="lazy"> Pinterest Ads
             </div>
             <div class="flex items-center gap-2 rounded-full border border-zinc-200 dark:border-brand-navy/30 bg-white dark:bg-white/5 px-4 py-2 text-sm font-medium text-zinc-700 dark:text-zinc-200 shadow-sm transition hover:shadow-md">
-              <img src="./site com imagens, animações, elementos e efeitos/images/google-analytics-circle-logo.svg" alt="Google Analytics" class="h-6 w-6"> Analytics
+              <img src="./site com imagens, animações, elementos e efeitos/images/google-analytics-circle-logo.svg" alt="Logo do Google Analytics" width="24" height="24" loading="lazy"> Analytics
             </div>
           </div>
         </div>
@@ -573,11 +603,7 @@
   </div>
 
   <script>
-    lucide.createIcons({
-      attrs: {
-        "stroke-width": 1.5
-      }
-    });
+    // Lucide initialization moved to bottom script block for performance
 
     // Theme Toggle Logic
     var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
@@ -674,6 +700,23 @@
         }
       });
     }
+  </script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    // Initialize Lucide with custom settings
+    lucide.createIcons({
+      attrs: {
+        "stroke-width": 1.5
+      }
+    });
+
+    // Mobile menu simple scroll
+    document.getElementById('mobile-menu-button')?.addEventListener('click', () => {
+      const section = document.getElementById('auditoria');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
   </script>
 </body>
 </html>
