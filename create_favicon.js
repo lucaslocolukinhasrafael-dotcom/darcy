@@ -48,12 +48,25 @@ async function createFavicon() {
   // Crop the icon part
   const icon = image.clone().crop({ x: 0, y: 0, w: gapX, h: h }).autocrop();
   
-  // Create a 180x180 container and center the icon with minimal padding
-  const size = 180;
-  const squareIcon = icon.clone().contain({ w: size, h: size });
+  const fs = require('fs');
   
-  await squareIcon.write('assets/favicon.png');
-  console.log("Favicon updated at assets/favicon.png (180x180)");
+  const sizes = [32, 48, 180, 192];
+  for (const size of sizes) {
+    const squareIcon = icon.clone().contain({ w: size, h: size });
+    const filename = `assets/favicon-${size}x${size}.png`;
+    await squareIcon.write(filename);
+    console.log(`Generated: ${filename}`);
+  }
+  
+  // Write default favicon.png (192x192)
+  const defaultIcon = icon.clone().contain({ w: 192, h: 192 });
+  await defaultIcon.write('assets/favicon.png');
+  console.log("Updated assets/favicon.png (192x192)");
+  
+  // Copy 32x32 to root favicon.ico and 192x192 to root favicon.png for search engine discovery fallback
+  fs.copyFileSync('assets/favicon-32x32.png', 'favicon.ico');
+  fs.copyFileSync('assets/favicon-192x192.png', 'favicon.png');
+  console.log("Copied favicons to root directory (favicon.ico and favicon.png)");
 }
 
 createFavicon().catch(err => console.error(err));
