@@ -52,14 +52,21 @@ async function createFavicon() {
   
   const sizes = [32, 48, 180, 192];
   for (const size of sizes) {
-    const squareIcon = icon.clone().cover({ w: size, h: size });
+    const zoomedW = Math.floor(size * 1.15);
+    const zoomedH = Math.floor(size * 1.15);
+    const squareIcon = icon.clone()
+      .cover({ w: zoomedW, h: zoomedH })
+      .crop({ x: Math.floor((zoomedW - size)/2), y: Math.floor((zoomedH - size)/2), w: size, h: size });
     const filename = `assets/favicon-${size}x${size}.png`;
     await squareIcon.write(filename);
     console.log(`Generated: ${filename}`);
   }
   
   // Write default favicon.png (192x192)
-  const defaultIcon = icon.clone().cover({ w: 192, h: 192 });
+  const defaultZoomed = Math.floor(192 * 1.15);
+  const defaultIcon = icon.clone()
+    .cover({ w: defaultZoomed, h: defaultZoomed })
+    .crop({ x: Math.floor((defaultZoomed - 192)/2), y: Math.floor((defaultZoomed - 192)/2), w: 192, h: 192 });
   await defaultIcon.write('assets/favicon.png');
   console.log("Updated assets/favicon.png (192x192)");
   
