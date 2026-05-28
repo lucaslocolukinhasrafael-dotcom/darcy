@@ -728,13 +728,6 @@
             'form_id': 'lead-form'
           });
 
-          // Disparo Direto para o Google Ads
-          window.dataLayer.push({
-            'event': 'conversion_event_submit_lead_form_2'
-          });
-          if (typeof gtag === 'function') {
-            gtag('event', 'conversion_event_submit_lead_form_2');
-          }
           form.reset();
           form.classList.add('hidden');
           formSuccess.classList.remove('hidden');
